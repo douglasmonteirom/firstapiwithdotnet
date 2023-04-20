@@ -1,4 +1,5 @@
 using ManagementSystem.Data;
+using ManagementSystem.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,8 @@ builder.Services.AddEntityFrameworkMySql()
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySQLDatabase"))
         )
     );
+
+builder.Services.AddScoped<IUsersRepositorie, UserRepositorie>();
 
 var app = builder.Build();
 
